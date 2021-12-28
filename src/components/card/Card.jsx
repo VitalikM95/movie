@@ -27,9 +27,7 @@ const Card = ({ id, title, release_date, poster_path, onFavourite }) => {
       <div className='card_info'>
         <div className='card_title'>{title}</div>
         <div className='cadrd_footer'>
-          <div className='card_footer__data'>
-            {release_date.substring(0, 4)}
-          </div>
+          <div className='card_footer__data'>{release_date}</div>
           <div className='card_footer__button'>
             <button
               className={isItemFavorited(id) ? 'button_added' : 'button'}

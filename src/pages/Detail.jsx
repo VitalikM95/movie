@@ -46,9 +46,7 @@ const Detail = ({ info, onFavourite }) => {
               />
             </div>
             <div className='movie_info'>
-              <h2 className='movie_title'>
-                {info.title} ({info.release_date.substring(0, 4)})
-              </h2>
+              <h2 className='movie_title'>{info.title}</h2>
               <div className='wrap_div'>
                 <div className='movie_date'>
                   <img
@@ -100,8 +98,8 @@ const Detail = ({ info, onFavourite }) => {
           navigation={true}
           className='mySwiper'>
           {recomendItems.map(item => (
-            <SwiperSlide>
-              <div key={item.id} className='recomend_item'>
+            <SwiperSlide key={item.id}>
+              <div className='recomend_item'>
                 <img
                   src={`${apiConfig.w500Image}${item.poster_path}`}
                   alt='image'
@@ -109,9 +107,6 @@ const Detail = ({ info, onFavourite }) => {
                   height={150}
                 />
                 <div className='recomend_item__title'>{item.title}</div>
-                <div className='recomend_item__date'>
-                  {item.release_date.substring(0, 4)}
-                </div>
               </div>
             </SwiperSlide>
           ))}

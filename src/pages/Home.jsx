@@ -17,20 +17,26 @@ const Home = ({ addToFavourite }) => {
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const { data } = await axios.get(urlPopular)
-        setItems([...items, ...data.results])
-      } catch (error) {}
+      if (page > 0) {
+        try {
+          const { data } = await axios.get(urlPopular)
+          setItems([...items, ...data.results])
+        } catch (error) {
+          alert('Помилка отримання даних(популярні)')
+        }
+      }
     }
     fetchData()
   }, [page])
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const { data } = await axios.get(urlSearch)
-        setSeachItems(data.results)
-      } catch (error) {}
+      if (searchValue) {
+        try {
+          const { data } = await axios.get(urlSearch)
+          setSeachItems(data.results)
+        } catch (error) {}
+      }
     }
     fetchData()
   }, [searchValue])
@@ -74,12 +80,8 @@ const Home = ({ addToFavourite }) => {
         </div>
       </div>
       <div className='movie_list'>
-        {(searchValue ? seachItems : items).map(obj => (
-          <Card
-            key={obj.id}
-            {...obj}
-            onFavourite={obj => addToFavourite(obj)}
-          />
+        {(searchValue ? seachItems : items).map((obj, index) => (
+          <Card key={index} {...obj} onFavourite={obj => addToFavourite(obj)} />
         ))}
       </div>
       {searchValue ? null : <div ref={lastElem} style={{ height: 20 }}></div>}
