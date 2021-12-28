@@ -1,0 +1,16 @@
+.content {
+  margin-top: 70px;
+
+  .content_items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 930px) {
+  .content_items {
+    display: flex;
+    flex-direction: column;
+  }
+}
