@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiConfig from './../api/apiConfig'
 import AppContext from '../context'
@@ -12,7 +13,7 @@ import SwiperCore, { Navigation } from 'swiper'
 SwiperCore.use([Navigation])
 
 const Detail = ({ info, onFavourite }) => {
-  const { isItemFavorited } = useContext(AppContext)
+  const { isItemFavorited, onClickMovie } = useContext(AppContext)
   const [recomendItems, setRecomendItems] = useState([])
   const urlRecomend = `${apiConfig.baseUrl}movie/${info.id}/recommendations?${apiConfig.apiKey}&language=uk-UA&page=1`
   const detailPosterUrl = `${apiConfig.w500Image}${info.poster_path}`
@@ -114,7 +115,9 @@ const Detail = ({ info, onFavourite }) => {
           className='mySwiper'>
           {recomendItems.map(item => (
             <SwiperSlide key={item.id}>
-              <div className='recomend_item'>
+              <div
+                onClick={() => onClickMovie(item.id)}
+                className='recomend_item'>
                 <img
                   src={`${apiConfig.w500Image}${item.poster_path}`}
                   alt='image'
@@ -127,6 +130,9 @@ const Detail = ({ info, onFavourite }) => {
           ))}
         </Swiper>
       </div>
+      <Link to='/detail'>
+        <button>click</button>
+      </Link>
     </div>
   )
 }
