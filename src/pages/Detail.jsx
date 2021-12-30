@@ -38,39 +38,54 @@ const Detail = ({ info, onFavourite }) => {
         <div className='movie_overlay'>
           <div className='container'>
             <div className='movie_img'>
-              <img
-                src={detailPosterUrl}
-                alt='movie_poster'
-                width={300}
-                height={400}
-              />
+              {info.poster_path && (
+                <img
+                  src={detailPosterUrl}
+                  alt='movie_poster'
+                  width={300}
+                  height={400}
+                />
+              )}
             </div>
             <div className='movie_info'>
               <h2 className='movie_title'>{info.title}</h2>
               <div className='wrap_div'>
-                <div className='movie_date'>
-                  <img
-                    src='./calendar.svg'
-                    alt='calendar'
-                    width={20}
-                    height={20}
-                  />
-                  {info.release_date}
-                </div>
-                <div className='movie_info__genre'>
-                  {info.genres.map(item => (
-                    <div key={item.name} className='movie_genre__item'>
-                      {item.name}
-                    </div>
-                  ))}
-                </div>
-              </div>
+                {info.release_date ? (
+                  <div className='movie_date'>
+                    <img
+                      src='./calendar.svg'
+                      alt='calendar'
+                      width={20}
+                      height={20}
+                    />
+                    {info.release_date}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
 
-              <div className='movie_text'>
-                <span className='movie_text__header'>Опис</span>
-                <br />
-                {info.overview}
+                <div className='movie_info__genre'>
+                  {info.genres ? (
+                    info.genres.map(item => (
+                      <div key={item.name} className='movie_genre__item'>
+                        {item.name}
+                      </div>
+                    ))
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
               </div>
+              {info.overview ? (
+                <div className='movie_text'>
+                  <span className='movie_text__header'>Опис</span>
+                  <br />
+                  {info.overview}
+                </div>
+              ) : (
+                <div></div>
+              )}
+
               <span className='movie_info__button'>
                 <button
                   className={
