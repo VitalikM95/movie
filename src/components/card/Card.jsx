@@ -28,10 +28,8 @@ const Card = ({ id, title, release_date, poster_path, onFavourite }) => {
       <div className='card_info'>
         <div className='card_title'>{title}</div>
         <div className='cadrd_footer'>
-          {release_date ? (
+          {release_date && (
             <div className='card_footer__data'>{release_date}</div>
-          ) : (
-            <div></div>
           )}
           <div className='card_footer__button'>
             <button

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiConfig from './../api/apiConfig'
 import AppContext from '../context'
@@ -130,9 +129,6 @@ const Detail = ({ info, onFavourite }) => {
           ))}
         </Swiper>
       </div>
-      <Link to='/detail'>
-        <button>click</button>
-      </Link>
     </div>
   )
 }
