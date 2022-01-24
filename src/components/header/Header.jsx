@@ -11,7 +11,7 @@ const Header = ({ favouriteItems }) => {
           <img src='./logo.svg' alt='logo' width={50} height={50} />
         </div>
         <Link to='/'>
-          <div className='header_center'>The moovie database</div>
+          <div className='header_center'>The movie database</div>
         </Link>
         <div className='header_right'>
           <Link to='/favourite'>
